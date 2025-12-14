@@ -4,7 +4,7 @@
 ---
 This repository is a modified version of the original project. The original repository has been sold out and is currently in active use, so it is not available for public access at this time.
 
-This site is built with [Eleventy](https://www.11ty.dev/docs/) and [Netlify](https://netlify.com)
+The site is built with [Eleventy](https://www.11ty.dev/docs/) and [Netlify](https://netlify.com)
 
 ---
 
