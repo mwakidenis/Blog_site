@@ -1,0 +1,16 @@
+@use "font";
+
+.publishedDate {
+  display: flex;
+  flex-direction: row;
+  gap: 2rem;
+  align-items: center;
+  justify-content: flex-start;
+}
+
+.publishedDate__item {
+  @include font.font_semibold;
+  font-size: 0.875rem;
+  margin-bottom: 0;
+  color: var(--color-fg);
+}

@@ -1,0 +1,45 @@
+@use "tc-layout";
+
+.about {
+  @include tc-layout.tc_layout_container;
+}
+
+.about__image {
+  @include tc-layout.tc_layout_left($width: 28rem);
+}
+
+.about__name {
+  z-index: 10;
+  margin-top: -6.6rem;
+
+  @media screen and (min-width: tc-layout.$tc_layout_breakpoint) {
+    margin-top: 0;
+  }
+}
+
+.about__fixed {
+  @include tc-layout.tc_layout_fixed($height: 100vh);
+
+  @media screen and (min-width: tc-layout.$tc_layout_breakpoint) {
+    align-items: flex-start;
+  }
+  
+  img {
+    background-color: var(--bio-image-container-bg);
+  }
+
+  * {
+    height: calc(100% - 6.5rem);
+    object-fit: cover;
+    border-radius: var(--border-radius-base);
+  }
+}
+
+.about__details {
+  @include tc-layout.tc_layout_scroll;
+
+  margin: unset;
+}
+
+.about__bio {
+}

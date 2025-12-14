@@ -1,0 +1,549 @@
+@use "font";
+@use "utils";
+
+[color-mode="dark"] {
+  --post-hr-color: var(--pink-light);
+  --table-th-color: var(--color-fg);
+  --post-meta-fg-color: var(--color-bg);
+}
+[color-mode="light"] {
+  --post-hr-color: var(--pink);
+  --table-th-color: var(--white);
+  --post-meta-fg-color: var(--color-fg);
+}
+
+.post {
+  max-width: var(--post-max-width);
+  margin: auto;
+}
+
+@media screen and (min-width: 56em) {
+  .post {
+    display: grid;
+    grid-template-columns: 1fr 3fr;
+    column-gap: clamp(2rem, 4vw, 4rem);
+  }
+}
+
+.post__meta {
+  margin: auto;
+  max-width: var(--post-max-width);
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  gap: 2rem;
+  margin-bottom: 2rem;
+  flex-wrap: wrap;
+}
+
+.post__meta__topic {
+  @include font.font_semibold;
+  font-weight: 500;
+  font-size: 0.875rem;
+  line-height: 1.5;
+  color: var(--post-meta-fg-color);
+  background-color: #ffffff;
+  border-radius: 1rem;
+  padding: 0.125rem 0.5rem;
+  width: max-content;
+}
+
+.post__excerpt {
+  p {
+    @include font.font_semibold;
+    font-size: 1.25rem;
+    line-height: 1.5;
+    margin-bottom: 2rem;
+    color: var(--color-fg-copy);
+  }
+}
+
+.post__separator {
+  margin-bottom: 2rem;
+  border-color: var(--post-hr-color);
+  border-style: solid;
+}
+
+.post__article {
+  display: flex;
+  flex-direction: column;
+}
+
+.post__aside {
+  flex-direction: column;
+  display: flex;
+  width: 17.5rem;
+}
+
+.post__authorContainer {
+  @media screen and (min-width: 56em) {
+    margin-bottom: 2rem;
+  }
+}
+
+.post__asideStickyGroup {
+  --sticky-gap: 10rem;
+  position: sticky;
+  top: var(--sticky-gap);
+  overflow-y: auto;
+  max-height: 100vh;
+  padding-top: 0.25rem;
+  padding-bottom: 0;
+  padding-right: 1rem;
+  margin-left: -1rem;
+  padding-left: 1rem;
+
+  @media screen and (min-width: 56em) {
+    padding-bottom: var(--sticky-gap);
+  }
+}
+
+.post__body {
+  margin-bottom: 2rem;
+}
+
+.post__hr {
+  border-color: var(--color-fg-copy);
+  margin-top: 2rem;
+  margin-bottom: 2rem;
+}
+
+.post__h1 {
+  @include font.font_bold;
+  margin: 0 auto 3rem auto;
+  font-size: clamp(2.5rem, 3.5vw, 3.5rem);
+  line-height: 1.4;
+  color: var(--color-fg);
+  max-width: var(--post-max-width);
+  text-wrap: balance;
+}
+
+.post__h2 {
+  @include font.font_semibold;
+  font-size: clamp(1.8rem, 2.8vw, 2rem);
+  line-height: 1.4;
+  margin-bottom: 2rem;
+  margin-top: 2rem;
+  word-break: break-word;
+  hyphens: auto;
+  color: var(--color-fg);
+}
+
+.post__h3 {
+  @include font.font_semibold;
+  font-size: 1.4rem;
+  line-height: 1.4;
+  margin-top: 2rem;
+  margin-bottom: 2rem;
+  color: var(--color-fg);
+  word-break: break-word;
+  hyphens: auto;
+}
+
+.post__linkedHeading {
+  display: block;
+  text-decoration: none;
+  color: var(--color-fg);
+  position: relative;
+  @include utils.link_focus;
+}
+
+.post__h4,
+.post__h5,
+.post__h6 {
+  @include font.font_semibold;
+  font-size: 1.2rem;
+  line-height: 1.4;
+  margin-bottom: 1rem;
+  color: var(--color-fg);
+}
+
+.post__p {
+  @include font.font_main;
+  font-size: 1.125rem;
+  line-height: 1.75;
+  margin-bottom: 1rem;
+  color: var(--color-fg-copy);
+  word-break: break-word;
+
+  a {
+    @include utils.link_focus;
+  }
+}
+
+.post__p--bold {
+  font-family: var(--font-family-bold);
+  font-weight: var(--font-weight-bold);
+}
+
+.post__p--italic {
+  font-style: italic;
+}
+
+.post__responsiveImage {
+  margin-top: 2rem;
+  margin-bottom: 2rem;
+}
+
+.post__codeBlock {
+  margin-bottom: 2rem;
+  margin-top: 2rem;
+}
+
+.post__codeBlockBar {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  width: 100%;
+  background: var(--grey-dark);
+  border-radius: calc(var(--border-radius-base) * 2) calc(var(--border-radius-base) * 2) 0 0;
+  padding: 0.5rem 1rem;
+  position: relative;
+}
+
+.post__codeBlockCopyButton {
+  position: absolute;
+  top: 0;
+  right: 0;
+  padding: 0.5rem;
+  display: flex;
+  gap: 0.5rem;
+  justify-content: space-between;
+  align-items: center;
+  font-size: 1rem;
+  @include font.font_main;
+  color: var(--black);
+  border-radius: 0 var(--border-radius-base) 0 0;
+  background: var(--white);
+
+  svg,
+  span {
+    pointer-events: none;
+  }
+}
+
+.post__codeBlockCopyButton:focus-visible,
+.post__codeBlockCopyButton:active,
+.post__codeBlockCopyButton:focus {
+  @include utils.link_focus;
+}
+
+.post__blockquote {
+  display: block;
+  margin-block-start: 2rem;
+  margin-block-end: 2rem;
+  padding: 1rem 1.5rem;
+  border-left: 0.25rem solid var(--orange);
+}
+
+.post__blockquote p {
+  font-style: italic;
+  font-size: clamp(1rem, 1.5rem, 1.5rem);
+  line-height: 1.5;
+  font-weight: 500;
+  color: var(--color-fg);
+}
+
+.post__blockquote:before {
+  content: '"';
+  font-style: italic;
+  color: var(--orange);
+  font-size: 8rem;
+  line-height: 0;
+  position: relative;
+  top: 2rem;
+}
+
+.post__externalUrl,
+.post__isSponsored {
+  @include font.font_bold;
+  margin-bottom: 2rem;
+  max-width: max-content;
+  color: var(--color-fg);
+  text-decoration: none;
+  display: flex;
+  flex-direction: row;
+  justify-content: flex-start;
+  align-items: center;
+  font-size: 1rem;
+  word-wrap: break-word;
+}
+
+.post__isSponsoredIcon,
+.post__externalUrlIcon {
+  margin-right: 0.5rem;
+  display: flex;
+}
+
+.post__related {
+  margin-bottom: 2rem;
+}
+
+.post__relatedHeader {
+  @include font.font_semibold;
+  font-size: clamp(1.8rem, 2.8vw, 2rem);
+  line-height: 1.4;
+  margin-bottom: 2rem;
+  padding-top: 2rem;
+  word-break: break-word;
+  hyphens: auto;
+  color: var(--color-fg-copy);
+}
+
+.post__relatedHeaderTitle {
+}
+
+.post__relatedGrid {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 1.5rem;
+
+  @media screen and (min-width: 54em) {
+    grid-template-columns: 1fr 1fr;
+  }
+}
+
+.post__responsiveImage {
+  margin-left: auto;
+  margin-right: auto;
+  display: block;
+  border-radius: calc(var(--border-radius-base) * 2);
+}
+
+.post__deployToNetlifyButton {
+  margin: 2rem auto;
+  display: block;
+  width: max-content;
+}
+
+.post__callout {
+  padding: 1rem;
+  border-radius: 0.75rem;
+  border: 0.25rem solid var(--post-hr-color);
+  margin-top: 2rem;
+  margin-bottom: 2rem;
+}
+
+.post__calloutTitle {
+  @include font.font_bold;
+  font-size: 1.4rem;
+  line-height: 1.6;
+  margin-bottom: 1rem;
+  color: var(--color-fg);
+}
+
+.post__calloutContent {
+  @include font.font_main;
+  font-size: 1.2rem;
+  line-height: 1.6;
+  color: var(--color-fg);
+  word-break: break-word;
+}
+
+.post__calloutContent p:not(:last-of-type) {
+  margin-bottom: 1rem;
+}
+
+.post__calloutContent blockquote {
+  margin-inline-start: 1rem;
+}
+
+.post__calloutContent blockquote p {
+  @include font.font_semibold;
+  margin-bottom: 1.75rem;
+  font-size: 1.4rem;
+  line-height: 1.7;
+}
+
+.post__calloutContent blockquote:before {
+  content: '"';
+  font-style: italic;
+  color: var(--orange);
+  font-size: 10rem;
+  line-height: 0;
+  position: relative;
+  top: 4rem;
+}
+
+.post__outOfDate {
+  @include font.font_semibold;
+  line-height: 1.3;
+  font-size: 1.5rem;
+  margin-bottom: 2rem;
+}
+
+.post__referer {
+  @include font.font_semibold;
+  display: block;
+  max-width: var(--post-max-width);
+  font-size: 1rem;
+  margin: 1rem auto 2rem auto;
+  color: var(--color-fg);
+  line-height: 1.4;
+  font-style: italic;
+
+  a {
+    display: inline-block;
+    line-height: inherit;
+    position: relative;
+
+    @include utils.link_focus;
+  }
+}
+
+.post__arcadeEmbed {
+  margin-bottom: 2rem;
+  margin-top: 2rem;
+}
+
+.post__newsletterSignupWide {
+  display: none;
+
+  @media screen and (min-width: 56em) {
+    display: block;
+  }
+}
+
+.post__newsletterSignupSmall {
+  display: block;
+
+  @media screen and (min-width: 56em) {
+    display: none;
+  }
+}
+
+.post__tableWrapper {
+  overflow-x: auto;
+}
+
+.post__table {
+  --cell-padding: clamp(0.5rem, 0.75vw, 0.75rem);
+
+  border-collapse: collapse;
+  word-break: normal;
+  margin-bottom: 2rem;
+  margin-top: 1rem;
+}
+
+.post__tableHeader {
+  @include font.font_semibold;
+  text-align: left;
+  border: 1px solid var(--color-fg);
+  padding: var(--cell-padding);
+  background: var(--grey-mid);
+  color: var(--table-th-color);
+}
+
+.post__tableRow {
+}
+
+.post__tableCell {
+  @include font.font_main;
+  text-align: left;
+  word-wrap: break-word;
+  padding: var(--cell-padding);
+  border: 1px solid var(--color-fg);
+  vertical-align: top;
+}
+
+.post__likes {
+  margin-bottom: 2rem;
+  min-height: 400px;
+  padding-right: 1rem;
+}
+
+.post__likesTitle {
+  @include font.font_bold;
+  font-size: 2rem;
+  line-height: 1.2;
+  margin-bottom: 1rem;
+  color: var(--color-fg-copy);
+}
+
+.post__likesCta {
+  @include font.font_main;
+  color: var(--color-fg-copy);
+  font-size: 1.25rem;
+  font-style: italic;
+  margin-bottom: 2rem;
+  display: block;
+}
+
+.post__likesList {
+  list-style: none;
+  padding: 0;
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  margin-bottom: 1rem;
+}
+
+.post__like {
+  width: 4rem;
+  aspect-ratio: 1/1;
+  margin-right: -1rem;
+  border-radius: 100%;
+  filter: var(--base-shadow-filter);
+}
+
+.post__like__avatar {
+  border-radius: 100%;
+}
+
+.post__like--placeholder,
+.post__like--howManyMore {
+  @include font.font_bold;
+  width: 4rem;
+  aspect-ratio: 1/1;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 1rem;
+  font-style: italic;
+  background-color: #208bfe;
+  color: #fff;
+}
+
+.post__coffee {
+  justify-content: center;
+  display: flex;
+  flex-direction: column;
+  gap: 2rem;
+  margin-bottom: 1rem;
+}
+
+.post__coffeeHeader {
+  @include font.font_semibold;
+  font-size: clamp(1.8rem, 2.8vw, 2rem);
+  line-height: 1.4;
+  color: var(--color-fg-copy);
+}
+
+.post__coffeeButton {
+  background: linear-gradient(45deg, #ffdd04 0%, var(--orange) 100%);
+  border: 0.125rem solid var(--black);
+  display: inline-block;
+  width: max-content;
+  border-radius: var(--border-radius-base);
+  color: var(--black);
+  font-weight: bold;
+  text-transform: uppercase;
+  font-size: 1.5rem;
+  text-align: center;
+  text-decoration: none;
+  padding: 0.5rem 1rem;
+  transition: all var(--global-transition-time) ease-in-out;
+}
+
+.post__coffeeButton:focus-visible,
+.post__coffeeButton:focus-visible:focus {
+  @include utils.link_focus;
+  background: #ffdd04;
+}
+
+.post__coffeeThanks {
+  @include font.font_semibold;
+  font-size: 1rem;
+  line-height: 1.5;
+  color: var(--color-fg-copy);
+}

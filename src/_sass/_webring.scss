@@ -1,0 +1,93 @@
+@use "font";
+@use "utils";
+
+.tcwr__title {
+  @include font.font_bold;
+  color: var(--color-link);
+  font-size: 1.2rem;
+  line-height: 1.6;
+  margin-bottom: 0.5rem;
+
+  span {
+    font-style: italic;
+    color: var(--orange);
+  }
+}
+
+.tcwr__logo {
+  max-height: 90%;
+  margin: auto;
+}
+
+.tcwr__nav {
+  display: flex;
+  flex-direction: row;
+  gap: 1rem;
+  margin-top: 0.5rem;
+  margin-bottom: 1rem;
+  justify-content: space-around;
+}
+
+.tcwr__navItem {
+  font-style: italic;
+  line-height: 1.2;
+  color: var(--color-fg-copy);
+  display: block;
+  font-size: 1rem;
+  padding: 0.25rem;
+  border-radius: var(--border-radius-base);
+}
+
+.tcwr__navItem--random {
+  @include font.font_bold;
+  font-style: normal;
+  color: var(--color-fg-copy);
+  border-radius: var(--border-radius-base);
+  background-color: var(--input-bg);
+  padding: 0.6rem 1rem;
+  border: var(--input-border);
+}
+
+.tcwr__navItem:focus,
+.tcwr__navItem:focus-visible {
+  @include utils.input_focus;
+}
+
+.tcwr__membersList {
+  padding-inline-start: 0;
+  list-style: none;
+  max-height: 100px;
+  overflow-y: auto;
+}
+
+.tcwr__membersListItemLink {
+  color: var(--color-fg-copy);
+  margin-bottom: 0.25rem;
+  display: block;
+}
+
+.tcwr__membersListItemLink:focus-visible,
+.tcwr__membersListItemLink:focus-visible:focus {
+  @include utils.input_focus;
+}
+
+.tcwr__join {
+  background: linear-gradient(45deg, var(--pink) 0%, var(--orange) 75%);
+  display: block;
+  border-width: 0;
+  border-radius: var(--border-radius-base);
+  width: 100%;
+  color: var(--white);
+  font-weight: bold;
+  text-transform: uppercase;
+  font-size: 1.5rem;
+  text-align: center;
+  text-decoration: none;
+  padding: 0.5rem 1rem;
+  margin: 1rem auto 0.5rem auto;
+}
+
+.tcwr__join:focus-visible,
+.tcwr__join:focus-visible:focus {
+  @include utils.link_focus;
+}

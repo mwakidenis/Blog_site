@@ -1,0 +1,5 @@
+@use "utils";
+
+.talks__cardGrid {
+  @include utils.card_grid;
+}

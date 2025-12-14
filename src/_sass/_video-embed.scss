@@ -1,0 +1,24 @@
+@use "font";
+
+.videoEmbed {
+  text-align: center;
+}
+
+.videoEmbed__iframe {
+  margin-bottom: 1rem;
+  margin-top: 2rem;
+  filter: var(--base-shadow-filter);
+  border-radius: calc(var(--border-radius-base) * 2);
+  overflow: hidden;
+}
+
+.videoEmbed__ytShort {
+  .videoEmbed__iframe {
+    lite-youtube {
+      aspect-ratio: 9/16;
+      position: relative;
+      width: 100%;
+      height: auto;
+    }
+  }
+}

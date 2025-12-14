@@ -1,0 +1,48 @@
+[dev]
+  publish = "_site"
+  command = "npm run dev"
+
+[build]
+  command = "npm run build"
+  functions = "src/_functions/"
+  edge_functions = "src/_edge-functions/"
+  
+# redirects
+[[redirects]]
+  from = "/api/*"
+  to = "/.netlify/functions/:splat"
+  status = 200
+
+[[redirects]]
+  from = "/topics"
+  to = "/topics/webdev/"
+  status = 308
+
+[[redirects]]
+  from = "/faqs"
+  to = "/blog/faqs/"
+  status = 301
+
+[[redirects]]
+  from = "/github"
+  to = "https://github.com/whitep4nth3r"
+  status = 301
+
+[[redirects]]
+  from = "/discord"
+  to = "https://discord.gg/GQbXUVCneJ"
+  status = 301
+
+[[redirects]]
+  from = "/newsletter"
+  to = "https://buttondown.email/weirdwidewebhole"
+  status = 301
+
+[[redirects]]
+  from = "/keyboard"
+  to = "https://collabs.shop/mmjqxo"
+  status = 301
+
+
+[images]
+  remote_images = ["https://static-cdn.jtvnw.net/cf_vods/.*"]

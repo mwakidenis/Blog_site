@@ -1,0 +1,53 @@
+@use "font";
+@use "tc-layout";
+@use "utils";
+
+.home {
+  @include tc-layout.tc_layout_container;
+}
+
+.home__left {
+  @include tc-layout.tc_layout_left;
+}
+
+.home__fixed {
+  @include tc-layout.tc_layout_fixed;
+}
+
+.home__scroll {
+  @include tc-layout.tc_layout_scroll;
+}
+
+.home__twitch {
+  margin-bottom: 3rem;
+
+  @media screen and (min-width: tc-layout.$tc_layout_breakpoint) {
+    display: flex;
+    flex-grow: 1;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+  }
+}
+
+.home__heading {
+  @include font.font_semibold;
+  font-size: 2rem;
+  line-height: 1;
+  margin-bottom: 2rem;
+  color: var(--color-link);
+  position: relative;
+  text-decoration: none;
+  @include utils.link_focus;
+}
+
+.home__activity {
+  margin: auto;
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 1rem;
+
+  @media screen and (min-width: tc-layout.$tc_layout_breakpoint) {
+    grid-template-columns: 1fr 1fr;
+  }
+}

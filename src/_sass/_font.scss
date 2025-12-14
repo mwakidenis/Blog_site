@@ -1,0 +1,14 @@
+@mixin font_main {
+  font-weight: var(--font-weight-main);
+  font-family: var(--font-family-main);
+}
+
+@mixin font_bold {
+  font-weight: var(--font-weight-bold);
+  font-family: var(--font-family-main);
+}
+
+@mixin font_semibold {
+  font-weight: var(--font-weight-mid);
+  font-family: var(--font-family-main);
+}
